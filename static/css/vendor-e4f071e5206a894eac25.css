@@ -1436,7 +1436,7 @@ span.CodeMirror-selectedtext { background: none; }
 }
 
 .tui-toolbar-icons {
-    background: url(/static/img/tui-editor-30dd0f529e5155cab8a1aefa4716de7f.png);
+    background: url(/markdown-editor/static/img/tui-editor-30dd0f529e5155cab8a1aefa4716de7f.png);
     background-size: 218px 188px;
     display: inline-block;
 }
@@ -1449,7 +1449,7 @@ only screen and (                -webkit-min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
   .tui-toolbar-icons {
-    background: url(/static/img/tui-editor-2x-b4361244b610df3a6c728a26a49f782b.png);
+    background: url(/markdown-editor/static/img/tui-editor-2x-b4361244b610df3a6c728a26a49f782b.png);
     background-size: 218px 188px;
     display: inline-block;
   }
