@@ -17,7 +17,7 @@ const webpackConfig = {
   output: {
     path: __dirname + "/",
     filename: "static/js/[name]-[hash].js",
-    publicPath: "/markdown-editor/"
+    publicPath: isProd ? "/markdown-editor/" : '/'
   },
   module: {
     rules: [{
