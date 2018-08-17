@@ -8,12 +8,12 @@ import "tui-editor/dist/tui-editor-contents.css";
 import "tui-color-picker/dist/tui-color-picker.css";
 import "highlight.js/styles/github.css";
 
-const height = new URL(location.href).searchParams.get("height") || 800;
+const height = new URL(window.location.href).searchParams.get("height") || document.body.clientHeight || 800;
 const editor = new Editor({
   el: document.querySelector("#editSection"),
   viewer: true,
   initialEditType: "markdown",
-  initialValue: localStorage.getItem("markdown"),
+  initialValue: window.localStorage.getItem("markdown"),
   previewStyle: "vertical",
   exts: ["scrollSync", "colorSyntax"],
   usageStatistics: false,
@@ -25,7 +25,7 @@ const editor = new Editor({
 
 function saveStorage() {
   const markdown = editor.getMarkdown();
-  localStorage.setItem("markdown", markdown);
+  window.localStorage.setItem("markdown", markdown);
 }
 
 window.addEventListener(
