@@ -19,30 +19,20 @@ const editor = new Editor({
   usageStatistics: false,
   height: height + "px",
   events: {
-    change: function() {
-      saveStorage();
-    }
+    change: saveStorage
   }
 });
 
 function saveStorage() {
   const markdown = editor.getMarkdown();
-  const html = editor.getHtml();
   localStorage.setItem("markdown", markdown);
-  localStorage.setItem("html", html);
-  window.parent.postMessage(
-    {
-      markdown,
-      html
-    },
-    "*"
-  );
 }
 
 window.addEventListener(
   "message",
   function(e) {
     if (e.source != window.parent) return;
+    if (typeof e.data !== 'string') return;
     editor.setValue(e.data);
   },
   false
