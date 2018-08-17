@@ -69,14 +69,14 @@ const webpackConfig = {
   ]
 }
 
-// if (isProd) {
-//   webpackConfig.plugins.push(
-//     new FileManagerPlugin({
-//       onStart: {
-//         delete: ["./static", "./index.html"]
-//       }
-//     })
-//   );
-// }
+if (isProd) {
+  webpackConfig.plugins.push(
+    new FileManagerPlugin({
+      onStart: {
+        delete: ["./static", "./index.html"]
+      }
+    })
+  );
+}
 
 module.exports = webpackConfig;
