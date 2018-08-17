@@ -8,7 +8,7 @@ import 'tui-editor/dist/tui-editor-contents.css';
 import 'tui-color-picker/dist/tui-color-picker.css';
 import 'highlight.js/styles/github.css';
 
-const height = (new URL(location.href)).searchParams.get("heigth") || 800;
+const height = (new URL(location.href)).searchParams.get("height") || 800;
 const editor = new Editor({
     el: document.querySelector('#editSection'),
     viewer: true,
