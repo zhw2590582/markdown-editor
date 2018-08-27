@@ -5,6 +5,7 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const FileManagerPlugin = require("filemanager-webpack-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const autoprefixer = require("autoprefixer");
+const pkg = require("./package.json");
 const isProd = process.env.NODE_ENV === "production";
 
 const webpackConfig = {
@@ -19,7 +20,7 @@ const webpackConfig = {
   output: {
     path: __dirname + "/",
     filename: "static/js/[name]-[hash].js",
-    publicPath: isProd ? "/markdown-editor/" : '/'
+    publicPath: isProd ? `/${pkg.name}/` : '/'
   },
   module: {
     rules: [{
