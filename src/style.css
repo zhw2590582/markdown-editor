@@ -42,6 +42,7 @@ html, body {
 .wrapper #postMate {
     width: 200px;
     padding: 5px;
+    border-top: 1px solid #e5e5e5;
 }
 
 .wrapper #postMate .item {
@@ -50,7 +51,7 @@ html, body {
 
 .wrapper #postMate .item .preview {
     height: 190px;
-    background-color: #ebebeb;
+    background-color: #f3f3f3;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 3px;
