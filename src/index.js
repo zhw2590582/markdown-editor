@@ -1,4 +1,5 @@
 import "normalize.css";
+import "./style.css";
 import Editor from "tui-editor";
 import "tui-editor/dist/tui-editor-extScrollSync";
 import "tui-editor/dist/tui-editor-extColorSyntax.js";
@@ -19,21 +20,9 @@ const editor = new Editor({
   usageStatistics: false,
   height: height + "px",
   events: {
-    change: saveStorage
+    change: function saveStorage() {
+      const markdown = editor.getMarkdown();
+      window.localStorage.setItem("markdown", markdown);
+    }
   }
 });
-
-function saveStorage() {
-  const markdown = editor.getMarkdown();
-  window.localStorage.setItem("markdown", markdown);
-}
-
-window.addEventListener(
-  "message",
-  function(e) {
-    if (e.source != window.parent) return;
-    if (typeof e.data !== 'string') return;
-    editor.setValue(e.data);
-  },
-  false
-);
