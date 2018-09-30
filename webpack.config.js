@@ -20,7 +20,7 @@ const webpackConfig = {
   output: {
     path: __dirname + "/",
     filename: "static/js/[name]-[hash].js",
-    publicPath: isProd ? `/${pkg.name}/` : '/'
+    publicPath: isProd ? `https://cdn.zhw-island.com/${pkg.name}/` : '/'
   },
   module: {
     rules: [{
