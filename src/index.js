@@ -8,7 +8,6 @@ import "tui-editor/dist/tui-editor.css";
 import "tui-editor/dist/tui-editor-contents.css";
 import "tui-color-picker/dist/tui-color-picker.css";
 import "highlight.js/styles/github.css";
-import saveAs from "./saveAs";
 
 const storageKey = "__editor__";
 
@@ -48,54 +47,4 @@ const editor = new Editor({
       setStorage("markdown", markdown);
     }
   }
-});
-
-const $reset = document.querySelector('.reset');
-const $download = document.querySelector('.download');
-const $preview = document.querySelector('.preview');
-const $inputs = Array.from(document.querySelectorAll('.input, .select'));
-const events = ["propertychange", "change", "click", "keyup", "input", "paste"];
-const eventFn = e => {
-  const target = e.target;
-  const name = target.name;
-  let value = target.value;
-  if (name === 'poster') {
-    $preview.setAttribute('style', `background-image: url(${value});`)
-  }
-  setStorage(name, value);
-};
-events.forEach(event => {
-  $inputs.forEach(input => {
-    input.addEventListener(event, eventFn);
-  })
-});
-
-$reset.addEventListener('click', clenaStorage);
-
-$download.addEventListener('click', e => {
-  const storage = getStorage();
-  const content = `<!---
-{
-    "title": "${storage.title || ''}",
-    "type": "${storage.type || ''}",
-    "poster": "${storage.poster || ''}",
-    "topic": "${storage.topic || 'default'}",
-    "sticky": ${storage.sticky || false}
-}
--->
-
-${storage.markdown || storage.title || ''}
-`
-  const blob = new Blob([content], {type: "text/plain;charset=utf-8"});
-  saveAs(blob, `${storage.name || 'unnamed'}.md`);
-});
-
-const storage = getStorage();
-Object.keys(storage).forEach(name => {
-  if (name === 'markdown') return;
-  let value = storage[name];
-  if (name === 'poster') {
-    $preview.setAttribute('style', `background-image: url(${value});`)
-  }
-  document.querySelector(`[name=${name}]`).value = value;
 });
